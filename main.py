@@ -45,10 +45,14 @@ def reset_router():
 
 def run():
     if not connect():
+        print("No internet access ...")
         time.sleep(60)  # 60 seconds
+        print("Restarting router after second try ...")
         if connect():
+            print("Restarting router ...")
             reset_router()
-            time.sleep(180)  # 181 seconds
+            time.sleep(300)  # 300 seconds
+            print("Successfully restarted the router ...")
 
 
 if __name__ == "__main__":
