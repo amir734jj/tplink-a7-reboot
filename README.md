@@ -1,8 +1,8 @@
-# tplink-a7-reset
+# tplink-a7-reboot
 
-TpLink Archer 7 reset when router loses connection
+TpLink Archer 7 reboot when router loses connection
 
-The reason I wrote this is that I got tired of manually restarting my router when it loses connection
+The reason I wrote this is that I got tired of manually rebooting my router when it loses connection
 
 ## Install:
 Requires python 3.x
