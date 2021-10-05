@@ -6,6 +6,7 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from twisted.internet import task, reactor
+from dotenv import load_dotenv
 
 password_field = "#form-login > div.login-field > div > div > div.widget-wrap.text-wrap.password-wrap.allow-visible > " \
                  "span.text-wrap.password-wrap > input.text-text.password-text.password-hidden.l "
@@ -58,6 +59,7 @@ def run():
 if __name__ == "__main__":
     timeout = 60.0  # Sixty seconds
 
+    load_dotenv()
     l = task.LoopingCall(run)
     l.start(timeout)
 

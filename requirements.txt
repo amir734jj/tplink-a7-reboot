@@ -1,3 +1,4 @@
 selenium
 twisted
 service-identity
+python-dotenv
