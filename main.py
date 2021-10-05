@@ -11,8 +11,8 @@ from dotenv import load_dotenv
 password_field = "#form-login > div.login-field > div > div > div.widget-wrap.text-wrap.password-wrap.allow-visible > " \
                  "span.text-wrap.password-wrap > input.text-text.password-text.password-hidden.l "
 login_button = "#login-btn"
-reset_modal = "#top-control-reboot"
-submit_reset = "#reboot_confirm_msg > div.position-center-left > div > div > div.msg-btn-container > div > " \
+reboot_modal = "#top-control-reboot"
+submit_reboot = "#reboot_confirm_msg > div.position-center-left > div > div > div.msg-btn-container > div > " \
                "div:nth-child(2) > button "
 
 
@@ -24,7 +24,7 @@ def connect(host='http://google.com'):
         return False
 
 
-def reset_router():
+def reboot_router():
     driver = webdriver.Chrome(executable_path=os.getenv('chromedriver'))
     driver.get(os.getenv('routerurl'))
     driver.implicitly_wait(15)
@@ -35,10 +35,10 @@ def reset_router():
     login_elm = driver.find_element_by_css_selector(login_button)
     login_elm.click()
 
-    reset_elm = WebDriverWait(driver, 10).until(lambda x: x.find_element(By.CSS_SELECTOR, reset_modal))
-    reset_elm.click()
+    reboot_elm = WebDriverWait(driver, 10).until(lambda x: x.find_element(By.CSS_SELECTOR, reboot_modal))
+    reboot_elm.click()
 
-    submit_elm = WebDriverWait(driver, 10).until(lambda x: x.find_element(By.CSS_SELECTOR, submit_reset))
+    submit_elm = WebDriverWait(driver, 10).until(lambda x: x.find_element(By.CSS_SELECTOR, submit_reboot))
     submit_elm.click()
 
     driver.close()
@@ -51,7 +51,7 @@ def run():
         print("Restarting router after second try ...")
         if connect():
             print("Restarting router ...")
-            reset_router()
+            reboot_router()
             time.sleep(300)  # 300 seconds
             print("Successfully restarted the router ...")
 
